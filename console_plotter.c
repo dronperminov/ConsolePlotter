@@ -73,6 +73,15 @@ void plot(double (*f)(double), double x_min, double x_max) {
 		field[iy][ix] = PLOT_CHAR;
 	}
 
+	// выводим засечки по X и значение по X
+	if (Yo >= 0 && Yo < Y_MAX) {
+		for (int ix = 3; ix < X_MAX; ix += 10) {
+			field[Yo][ix] = '|';
+
+			sprintf(&field[Yo + 1][ix - 3], "%.3lf", map(ix, 0, X_MAX - 1, x_min, x_max));
+		}
+	}
+
 	// выводим обозначение оси Y
 	if (Xo >= 0 && Xo <= X_MAX) {
 		for (int ix = 0; ix < Xo; ix++)
